@@ -1,0 +1,19 @@
+﻿@model string?
+
+@if (Model != null)
+{
+    <p>Привет, @Model!</p>
+}
+
+<form method="post" asp-controller="Greeting" asp-action="ProcessForm">
+    <label>Введите Ваше имя:</label>
+    <br>
+    <input type="text" name="name" />
+    <br />
+    <button type="submit">
+        Сказать привет!
+    </button>
+    <button type="submit" asp-controller="Greeting" asp-action="ProcessForm" asp-route-loud="true">
+        Сказать привет ГРОМКО!
+    </button>
+</form>
