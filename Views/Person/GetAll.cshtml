@@ -1,0 +1,23 @@
+﻿@model IList<Person>
+
+Пользователи
+<hr />
+
+@{
+    string GetSalaryText(Person person)
+    {
+        if (person.Salary == null)
+            return "Не работает";
+
+        return $"Зарплата: {person.Salary}";
+    }
+}
+
+<ol>
+    @foreach (Person person in Model)
+    {
+        <li>
+            @person.Name (@GetSalaryText(person)) (Дата и время регистрации: @person.CreatedAt)
+        </li>
+    }
+</ol>

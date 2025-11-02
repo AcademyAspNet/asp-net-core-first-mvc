@@ -1,3 +1,5 @@
+using MyFirstMvc.Data.Entities;
+using MyFirstMvc.Data.Repositories;
 using MyFirstMvc.Services;
 using MyFirstMvc.Services.Implementations;
 
@@ -11,6 +13,7 @@ namespace MyFirstMvc
 
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddScoped<IRepository<Person>, PersonRepository>();
             builder.Services.AddScoped<ICompanyService, CompanyService2>();
 
             var app = builder.Build();
