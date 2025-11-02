@@ -15,7 +15,7 @@ namespace MyFirstMvc
 
             var app = builder.Build();
 
-            app.MapControllers();
+            //app.MapControllers();
 
             app.MapControllerRoute("areas", "{area:exists}/{controller=Home}/{action=Index}");
             app.MapControllerRoute("default", "{controller=Home}/{action=Index}");
