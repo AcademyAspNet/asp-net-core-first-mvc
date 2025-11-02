@@ -15,6 +15,8 @@ namespace MyFirstMvc
 
             var app = builder.Build();
 
+            app.UseStaticFiles();
+
             app.MapControllers();
 
             app.Run();
