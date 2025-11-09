@@ -1,0 +1,20 @@
+﻿@model PersonDto
+
+<h1>Новый Person</h1>
+<hr />
+
+<form asp-controller="Person" asp-action="ProcessCreateForm" method="post">
+    <label asp-for="Name">Имя:</label>
+    <input asp-for="Name" />
+    <span class="text-danger" asp-validation-for="Name"></span>
+
+    <br />
+
+    <label asp-for="Salary">Зарплата:</label>
+    <input asp-for="Salary" />
+    <span class="text-danger" asp-validation-for="Salary"></span>
+
+    <br />
+
+    <button type="submit">Создать</button>
+</form>

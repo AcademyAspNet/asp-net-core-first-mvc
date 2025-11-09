@@ -1,9 +1,10 @@
 ﻿using Microsoft.Data.SqlClient;
 using MyFirstMvc.Data.Entities;
+using MyFirstMvc.Models.Dto;
 
 namespace MyFirstMvc.Data.Repositories
 {
-    public class PersonRepository : IRepository<Person>
+    public class PersonRepository : IRepository<Person, PersonDto>
     {
         private readonly string _connectionString;
 
@@ -53,6 +54,21 @@ namespace MyFirstMvc.Data.Repositories
 
                     return persons;
                 }
+            }
+        }
+
+        public void Create(PersonDto personDto)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "INSERT INTO [Persons] ([Name], [Salary]) VALUES (@Name, @Salary)";
+                command.Parameters.AddWithValue("@Name", personDto.Name);
+                command.Parameters.AddWithValue("@Salary", personDto.Salary ?? 0);
+
+                command.ExecuteNonQuery();
             }
         }
     }
