@@ -1,5 +1,5 @@
+using MyFirstMvc.Data;
 using MyFirstMvc.Data.Entities;
-using MyFirstMvc.Data.Repositories;
 using MyFirstMvc.Models.Dto;
 using MyFirstMvc.Services;
 using MyFirstMvc.Services.Implementations;
@@ -13,8 +13,7 @@ namespace MyFirstMvc
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllersWithViews();
-
-            builder.Services.AddScoped<IRepository<Person, PersonDto>, PersonRepository>();
+            builder.Services.AddDbContext<ApplicationDbContext>();
 
             builder.Services.AddScoped<IPersonService, PersonService>();
             builder.Services.AddScoped<ICompanyService, CompanyService2>();

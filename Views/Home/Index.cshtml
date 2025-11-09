@@ -1,3 +1,19 @@
 ﻿<h1>Привет, <u>Мир!</u></h1>
 
 <a asp-controller="Home" asp-action="AnotherIndex">Перейти на /Home/AnotherIndex</a>
+
+@using MyFirstMvc.Data
+@inject ApplicationDbContext databaseContext
+
+@{
+    IEnumerable<Person> persons = databaseContext.Persons
+                                                 .Where(p => p.Name.StartsWith("А"))
+                                                 .ToList();
+}
+
+<ol>
+    @foreach (Person person in persons)
+    {
+        <li>@person.Name</li>
+    }
+</ol>
